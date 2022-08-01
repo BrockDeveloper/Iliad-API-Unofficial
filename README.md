@@ -18,4 +18,4 @@ This is an unofficial Iliad API. Iliad S.P.A. is not responsible in any way.
   - [x] routes
   - [x] endpoints
   - [x] models
-  - [ ] exceptions
+  - [x] exceptions
