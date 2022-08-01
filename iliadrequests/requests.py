@@ -82,7 +82,7 @@ def get_auth_token(username: str, password: str) -> str:
             raise InvalidCredentials()
 
         if request.cookies.get('ACCOUNT_SESSID'):
-            return request.cookies.get_dict()['ACCOUNT_SESSID']
+            return Authorization(id = username, token = request.cookies.get_dict()['ACCOUNT_SESSID'])
         else:
             raise NoToken()
 

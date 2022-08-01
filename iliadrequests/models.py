@@ -4,6 +4,20 @@ from datetime import date, time, datetime
 
 
 
+class Authorization(BaseModel):
+    '''
+    Authorization model
+    
+    Attributes:
+        id: given user id
+        token: generated user token
+    '''
+
+    id: str
+    token: str
+
+
+
 class ConversationTime(BaseModel):
 
     '''
