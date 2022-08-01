@@ -18,7 +18,7 @@ def get_authorization(auth_request: AuthRequest):
         return parse_exception(exception)
 
 
-@router.get("/conversation_time", response_model = ConversationTime, status_code = status.HTTP_200_OK)
+@router.get("/conversation-time", response_model = ConversationTime, status_code = status.HTTP_200_OK)
 def get_conversation_time(token: Token):
     try:
         return iliad.get_conversation_time(token.token)
@@ -26,7 +26,7 @@ def get_conversation_time(token: Token):
         return parse_exception(exception)
 
 
-@router.get("/sent_messages", response_model = SentMessages, status_code = status.HTTP_200_OK)
+@router.get("/sent-messages", response_model = SentMessages, status_code = status.HTTP_200_OK)
 def get_sent_messages(token: Token):
     try:
         return iliad.get_sent_messages(token.token)
@@ -34,7 +34,7 @@ def get_sent_messages(token: Token):
         return parse_exception(exception)
 
 
-@router.get("/internet_traffic", response_model = Traffic, status_code = status.HTTP_200_OK)
+@router.get("/internet-traffic", response_model = Traffic, status_code = status.HTTP_200_OK)
 def get_internet_traffic(token: Token):
     try:
         return iliad.get_traffic(token.token)
@@ -42,7 +42,7 @@ def get_internet_traffic(token: Token):
         return parse_exception(exception)
 
 
-@router.get("/renewal_date", response_model = RenewalDate, status_code = status.HTTP_200_OK)
+@router.get("/renewal-date", response_model = RenewalDate, status_code = status.HTTP_200_OK)
 def get_renewal_date(token: Token):
     try:
         return iliad.get_renewal_date(token.token)
