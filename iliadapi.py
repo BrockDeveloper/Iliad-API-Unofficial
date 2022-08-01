@@ -1,12 +1,13 @@
-from fastapi import FastAPI
 import uvicorn
+from fastapi import FastAPI
 from backend.routes import router
-from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from fastapi.exceptions import RequestValidationError
 
 
 app = FastAPI()
 origins = ["http://localhost:8000"]
+
 
 app.include_router(router)
 

@@ -116,9 +116,8 @@ class RenewalDate(BaseModel):
     Renewal date Model
 
     ATTRIBUTES:
-        day: day of renewal
-        month: month of renewal
-        year: year of renewal
+        date: renewal date
+        time: renewal time
     '''
 
     date: date
