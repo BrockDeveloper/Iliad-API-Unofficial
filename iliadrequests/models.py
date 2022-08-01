@@ -137,5 +137,7 @@ class RenewalDate(BaseModel):
         RETURN:
             the parsed date
         '''
-        
-        return datetime.strptime(value, "%d/%m/%Y").date()
+        if isinstance(value, date):
+            return value
+        else:
+            return datetime.strptime(value, "%d/%m/%Y").date()
