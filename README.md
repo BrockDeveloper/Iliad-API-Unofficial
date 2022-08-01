@@ -12,7 +12,7 @@ This is an unofficial Iliad API. Iliad S.P.A. is not responsible in any way.
   - [ ] get sent mms
   - [ ] get user name
   - [x] get renew date
-  - [ ] define models
+  - [x] define models
 - API
   - [ ] previous points integration
   - [ ] routes
