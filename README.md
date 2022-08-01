@@ -14,7 +14,7 @@ This is an unofficial Iliad API. Iliad S.P.A. is not responsible in any way.
   - [x] get renew date
   - [ ] define models
 - API
-  - [ ] previous point integration
+  - [ ] previous points integration
   - [ ] routes
   - [ ] endpoints
   - [ ] models
