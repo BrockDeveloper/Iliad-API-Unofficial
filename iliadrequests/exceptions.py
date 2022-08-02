@@ -5,7 +5,7 @@ class IliadRequestsException(Exception):
     '''
 
     def __init__(self):
-        self.message = "An exception occurred."
+        self.message = "An exception occurred"
 
     def __str__(self):
         return self.message
@@ -19,7 +19,7 @@ class InvalidCredentials(IliadRequestsException):
     '''
 
     def __init__(self):
-        self.message = "Invalid username or password."
+        self.message = "Invalid username or password"
 
 
 
@@ -30,7 +30,7 @@ class NoToken(IliadRequestsException):
     '''
 
     def __init__(self):
-        self.message = "No token generated."
+        self.message = "No token generated"
 
 
 
@@ -41,7 +41,7 @@ class InvalidToken(IliadRequestsException):
     '''
 
     def __init__(self):
-        self.message = "Invalid token."
+        self.message = "Invalid token"
 
 
 
@@ -52,7 +52,7 @@ class BadRequest(IliadRequestsException):
     '''
 
     def __init__(self):
-        self.message = "Bad request."
+        self.message = "Bad request"
 
 
 
@@ -63,4 +63,4 @@ class InvalidXPath(IliadRequestsException):
     '''
     
     def __init__(self):
-        self.message = "Invalid xpath."
+        self.message = "Invalid xpath"

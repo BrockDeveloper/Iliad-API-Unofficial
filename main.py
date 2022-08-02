@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from backend.jsendstd import ErrorResponse
 from backend.routes import router
 from fastapi.responses import JSONResponse
 from fastapi.openapi.utils import get_openapi
@@ -14,7 +15,7 @@ app.include_router(router)
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request, exc):
-    return JSONResponse(status_code=422, content={'error': "Unprocessable Entity, check your request"})
+    return JSONResponse(status_code=422, content = ErrorResponse(message = "Unprocessable Entity, check your request").dict())
 
 
 

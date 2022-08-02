@@ -20,9 +20,9 @@ def parse_exception(exception: Exception):
         return JSONResponse(status_code = 401, content = ErrorResponse(message = str(exception)).dict())
 
     if isinstance(exception, BadRequest):
-        return JSONResponse(status_code = 400, content = {"error": str(exception)})
+        return JSONResponse(status_code = 400, content = ErrorResponse(message = str(exception)).dict())
 
     if isinstance(exception, InvalidXPath):
-        return JSONResponse(status_code = 500, content = {"error": str(exception)})
+        return JSONResponse(status_code = 500, content = ErrorResponse(message = str(exception)).dict())
 
-    return JSONResponse(status_code=500, content={'Error': "Internal server error"})
+    return JSONResponse(status_code=500, content = ErrorResponse(message = "Internal server error").dict())
