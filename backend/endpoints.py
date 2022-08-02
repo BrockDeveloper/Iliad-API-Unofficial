@@ -3,7 +3,7 @@ import iliadrequests.requests as iliad
 from backend.body import AuthRequest, Token
 from backend.exception import parse_exception
 from iliadrequests.exceptions import IliadRequestsException
-from iliadrequests.models import Authorization, ConversationTime, RenewalDate, SentMessages, Traffic
+from iliadrequests.models import Authorization, ConversationTime, RenewalDate, SentMessages, Traffic, AllUserData
 
 
 
@@ -56,5 +56,15 @@ def get_renewal_date(token: Token):
 
     try:
         return iliad.get_renewal_date(token.token)
+    except IliadRequestsException as exception:
+        return parse_exception(exception)
+
+
+
+@router.post("/user-data", response_model = AllUserData, status_code = status.HTTP_200_OK)
+def get_all_user_data(token: Token):
+
+    try:
+        return iliad.get_all_user_data(token.token)
     except IliadRequestsException as exception:
         return parse_exception(exception)
