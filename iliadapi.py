@@ -8,7 +8,7 @@ from fastapi.exceptions import RequestValidationError
 
 
 app = FastAPI()
-origins = ["http://localhost:8000"]
+origins = ["*"]
 
 app.include_router(router)
 
@@ -40,5 +40,5 @@ app.openapi = custom_openapi
 
 
 if __name__ == '__main__':
-    uvicorn.run("iliadapi:app", host='127.0.0.1', port=8005, log_level="info", reload=True)
+    uvicorn.run("iliadapi:app", host='192.168.178.43', port=8005, log_level="info", reload=True)
     print("running")

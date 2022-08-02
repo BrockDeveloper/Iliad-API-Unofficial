@@ -11,7 +11,7 @@ router = APIRouter(prefix = "/iliadapi")
 
 
 
-@router.get("/authorization", response_model = Authorization, status_code = status.HTTP_200_OK)
+@router.post("/authorization", response_model = Authorization, status_code = status.HTTP_200_OK)
 def get_authorization(auth_request: AuthRequest):
     
     try:
@@ -21,7 +21,7 @@ def get_authorization(auth_request: AuthRequest):
 
 
 
-@router.get("/conversation-time", response_model = ConversationTime, status_code = status.HTTP_200_OK)
+@router.post("/conversation-time", response_model = ConversationTime, status_code = status.HTTP_200_OK)
 def get_conversation_time(token: Token):
 
     try:
@@ -31,7 +31,7 @@ def get_conversation_time(token: Token):
 
 
 
-@router.get("/sent-messages", response_model = SentMessages, status_code = status.HTTP_200_OK)
+@router.post("/sent-messages", response_model = SentMessages, status_code = status.HTTP_200_OK)
 def get_sent_messages(token: Token):
 
     try:
@@ -41,7 +41,7 @@ def get_sent_messages(token: Token):
 
 
 
-@router.get("/internet-traffic", response_model = Traffic, status_code = status.HTTP_200_OK)
+@router.post("/internet-traffic", response_model = Traffic, status_code = status.HTTP_200_OK)
 def get_internet_traffic(token: Token):
 
     try:
@@ -51,7 +51,7 @@ def get_internet_traffic(token: Token):
 
 
 
-@router.get("/renewal-date", response_model = RenewalDate, status_code = status.HTTP_200_OK)
+@router.post("/renewal-date", response_model = RenewalDate, status_code = status.HTTP_200_OK)
 def get_renewal_date(token: Token):
 
     try:
