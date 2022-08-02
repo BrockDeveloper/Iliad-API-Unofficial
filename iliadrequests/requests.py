@@ -195,7 +195,7 @@ def get_used_traffic(token: str) -> str:
     '''
 
     response = __get_xpath_request(token, MAIN_URL, USED_TRAFFIC)[0]
-    return UsedTraffic(used_unit = response[-2:], used = float(response[:-2].replace(',', '.')))
+    return UsedTraffic(unit = response[-2:], used = float(response[:-2].replace(',', '.')))
 
 
 
@@ -217,7 +217,7 @@ def get_max_traffic(token: str) -> str:
     '''
     
     response = __get_xpath_request(token, MAIN_URL, MAX_TRAFFIC)[1]
-    return MaxTraffic(max_unit = response[-2:], max = float(response[:-2].replace('/', '').strip()))
+    return MaxTraffic(unit = response[-2:], max = float(response[:-2].replace('/', '').strip()))
 
 
 
@@ -237,10 +237,8 @@ def get_traffic(token: str) -> str:
         BadRequest, if the request is not OK
         invalid_xpath, if the xpath is invalid
     '''
-
-    used_traffic = get_used_traffic(token)
-    max_traffic = get_max_traffic(token)
-    return Traffic(used=used_traffic.used, used_unit=used_traffic.used_unit, max=max_traffic.max, max_unit=max_traffic.max_unit)
+    
+    return Traffic(used_traffic = get_used_traffic(token), max_traffic = get_max_traffic(token))
 
 
 
@@ -264,3 +262,24 @@ def get_renewal_date(token: str) -> str:
     response = __get_xpath_request(token, MAIN_URL, RENEWAL)[0]
     response = response.strip().split(' ')
     return RenewalDate(date=response[9], time=response[7])
+
+
+
+def get_all_user_data(token: str):
+
+    '''
+    Returns all information on the user
+
+    PARAM:
+        token: the token to be used
+    
+    RETURN:
+        all information on the user
+    
+    RAISE:
+        InvalidToken, if the token is invalid
+        BadRequest, if the request is not OK
+        invalid_xpath, if the xpath is invalid
+    '''
+    
+    return AllUserData(conversation_time=get_conversation_time(token), sent_messages=get_sent_messages(token), traffic=get_traffic(token), renewal_date=get_renewal_date(token))

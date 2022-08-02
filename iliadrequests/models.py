@@ -5,6 +5,7 @@ from datetime import date, time, datetime
 
 
 class Authorization(BaseModel):
+    
     '''
     Authorization model
     
@@ -64,49 +65,59 @@ class SentMessages(BaseModel):
 
 
 
-class UsedTraffic(BaseModel):
+class __Unit(BaseModel):
+
+    '''
+    Unit Model
+
+    ATTRIBUTES:
+        name: name of the unit
+    '''
+
+    unit: str
+
+
+
+class UsedTraffic(__Unit):
 
     '''
     Used traffic Model
 
     ATTRIBUTES:
         used: used traffic
-        used_unit: used traffic unit
+        unit: used traffic unit
     '''
 
-    used_unit: str
     used: float
 
 
 
-class MaxTraffic(BaseModel):
+class MaxTraffic(__Unit):
 
     '''
     Max traffic Model
     
     ATTRIBUTES:
         max: max traffic
-        max_unit: max traffic unit
+        unit: max traffic unit
     '''
 
-    max_unit: str
     max: float
 
 
 
-class Traffic(UsedTraffic, MaxTraffic):
+class Traffic(BaseModel):
 
     '''
     Traffic Model
 
     ATTRIBUTES:
-        used: used traffic
-        used_unit: used traffic unit
-        max: max traffic
-        max_unit: max traffic unit
+        used_traffic: used traffic [Model see: UsedTraffic]
+        max_traffic: max traffic [Model see: MaxTraffic]
     '''
 
-    pass
+    used_traffic: UsedTraffic
+    max_traffic: MaxTraffic
 
 
 
@@ -140,3 +151,22 @@ class RenewalDate(BaseModel):
             return value
         else:
             return datetime.strptime(value, "%d/%m/%Y").date()
+
+
+
+class AllUserData(BaseModel):
+
+    '''
+    All user data Model
+
+    ATTRIBUTES:
+        conversation_time: conversation time [Model see: ConversationTime]
+        sent_messages: sent messages [Model see: SentMessages]
+        traffic: traffic [Model see: Traffic]
+        renewal_date: renewal date [Model see: RenewalDate]
+    '''
+
+    conversation_time : ConversationTime
+    sent_messages : SentMessages
+    traffic : Traffic
+    renewal_date : RenewalDate
