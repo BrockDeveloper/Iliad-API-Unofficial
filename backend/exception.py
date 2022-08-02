@@ -1,4 +1,5 @@
 from fastapi.responses import JSONResponse
+from backend.jsendstd import ErrorResponse
 from iliadrequests.exceptions import *
 
 
@@ -16,7 +17,7 @@ def parse_exception(exception: Exception):
     '''
 
     if isinstance(exception, InvalidCredentials | NoToken | InvalidToken):
-        return JSONResponse(status_code = 401, content = {"error": str(exception)})
+        return JSONResponse(status_code = 401, content = ErrorResponse(message = str(exception)).dict())
 
     if isinstance(exception, BadRequest):
         return JSONResponse(status_code = 400, content = {"error": str(exception)})

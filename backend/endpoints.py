@@ -2,6 +2,7 @@ from fastapi import APIRouter, status
 import iliadrequests.requests as iliad
 from backend.body import AuthRequest, Token
 from backend.exception import parse_exception
+from backend.jsendstd import SuccessResponse
 from iliadrequests.exceptions import IliadRequestsException
 from iliadrequests.models import Authorization, ConversationTime, RenewalDate, SentMessages, Traffic, AllUserData
 
@@ -11,11 +12,11 @@ router = APIRouter(prefix = "/iliadapi")
 
 
 
-@router.post("/authorization", response_model = Authorization, status_code = status.HTTP_200_OK)
+@router.post("/authorization", response_model = SuccessResponse, status_code = status.HTTP_200_OK)
 def get_authorization(auth_request: AuthRequest):
     
     try:
-        return iliad.get_auth_token(auth_request.username, auth_request.password)
+        return SuccessResponse(data = iliad.get_auth_token(auth_request.username, auth_request.password))
     except IliadRequestsException as exception:
         return parse_exception(exception)
 
