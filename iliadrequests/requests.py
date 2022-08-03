@@ -91,7 +91,7 @@ def get_auth_token(username: str, password: str) -> str:
 def __get_xpath_request(token:str, url: str, xpath: str) -> list:
     
     '''
-    Looks for the values ​​specified by xpath in the response
+    Looks for the value specified by xpath in the response
     
     PARAM:
         token: the token to be used
@@ -104,6 +104,7 @@ def __get_xpath_request(token:str, url: str, xpath: str) -> list:
     RAISE:
         InvalidToken, if the token is invalid
         BadRequest, if the request is not OK
+        invalidXpath, if the xpath is invalid
     '''
 
     try:
@@ -139,7 +140,7 @@ def get_conversation_time(token: str):
     RAISE:
         InvalidToken, if the token is invalid
         BadRequest, if the request is not OK
-        invalid_xpath, if the xpath is invalid
+        invalidXpath, if the xpath is invalid
     '''
 
     response = __get_xpath_request(token, MAIN_URL, CONV_TIME)[0]
@@ -168,7 +169,7 @@ def get_sent_messages(token: str) -> str:
     RAISE:
         InvalidToken, if the token is invalid
         BadRequest, if the request is not OK
-        invalid_xpath, if the xpath is invalid
+        invalidXpath, if the xpath is invalid
     '''
 
     response = __get_xpath_request(token, MAIN_URL, SENT_MSG)[0]
@@ -191,7 +192,7 @@ def get_used_traffic(token: str) -> str:
     RAISE:
         InvalidToken, if the token is invalid
         BadRequest, if the request is not OK
-        invalid_xpath, if the xpath is invalid
+        invalidXpath, if the xpath is invalid
     '''
 
     response = __get_xpath_request(token, MAIN_URL, USED_TRAFFIC)[0]
@@ -213,7 +214,7 @@ def get_max_traffic(token: str) -> str:
     RAISE:
         InvalidToken, if the token is invalid
         BadRequest, if the request is not OK
-        invalid_xpath, if the xpath is invalid
+        invalidXpath, if the xpath is invalid
     '''
     
     response = __get_xpath_request(token, MAIN_URL, MAX_TRAFFIC)[1]
@@ -235,7 +236,7 @@ def get_traffic(token: str) -> str:
     RAISE:
         InvalidToken, if the token is invalid
         BadRequest, if the request is not OK
-        invalid_xpath, if the xpath is invalid
+        invalidXpath, if the xpath is invalid
     '''
     
     return Traffic(used_traffic = get_used_traffic(token), max_traffic = get_max_traffic(token))
@@ -256,7 +257,7 @@ def get_renewal_date(token: str) -> str:
     RAISE:
         InvalidToken, if the token is invalid
         BadRequest, if the request is not OK
-        invalid_xpath, if the xpath is invalid
+        invalidXpath, if the xpath is invalid
     '''
 
     response = __get_xpath_request(token, MAIN_URL, RENEWAL)[0]
@@ -279,7 +280,7 @@ def get_all_user_data(token: str):
     RAISE:
         InvalidToken, if the token is invalid
         BadRequest, if the request is not OK
-        invalid_xpath, if the xpath is invalid
+        invalidXpath, if the xpath is invalid
     '''
     
     return AllUserData(conversation_time=get_conversation_time(token), sent_messages=get_sent_messages(token), traffic=get_traffic(token), renewal_date=get_renewal_date(token))
